@@ -11,8 +11,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@discordjs/voice": "^0.16.1",
     "better-sqlite3": "^9.4.0",
     "colors": "^1.4.0",
+    "colors-cli": "^1.0.33",
     "discord-regiveaways": "^1.1.15",
     "discord.js": "v13.14",
     "dotenv": "^16.4.1",

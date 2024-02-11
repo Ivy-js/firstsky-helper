@@ -10,7 +10,11 @@ module.exports = async bot => {
     let commands = [
      new SlashCommandBuilder()
      .setName("help")
-     .setDescription("Permet de voir le menu d'aide général de FirstSky.")
+     .setDescription("Permet de voir le menu d'aide général de FirstSky."),
+
+     new SlashCommandBuilder()
+     .setName("admin")
+     .setDescription("Permet d'avoir accès au menu d'administrateur du bot")
     ];
     commands.push.toString(commands)
     

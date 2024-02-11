@@ -7,8 +7,8 @@ const Event = require("./Event");
 const { QuickDB } = require("quick.db")
 const db = new QuickDB()
 const GiveawayManager = require("discord-regiveaways"); 
-
-require("colors");
+var color = require("colors-cli/safe")
+require("colors")
 class Client extends Discord.Client {
   constructor(options) {
     super({ intents });
@@ -29,7 +29,7 @@ class Client extends Discord.Client {
       }
     })
     this.commands = new Discord.Collection();
-    this.color = config.color;
+    this.color = config.color.base;
     this.prefix = config.prefix;
     this.config = config
     this.db = db,
@@ -49,22 +49,25 @@ class Client extends Discord.Client {
     
         const props = require(`../Commands/${dirs}/${f}`);
         if(dirs === "Contact") {
-        console.log(`[📂 ${dirs}] - ${f} Chargée avec succès`.bgBlue);
+        console.log(`[📂 ${dirs}] - ${f} Chargée avec succès`.blue);
         } else if(dirs === "Fermes"){
-        console.log(`[📂 ${dirs}] - ${f} Chargée avec succès`.bgRed);
+        console.log(`[📂 ${dirs}] - ${f} Chargée avec succès`.red);
         }
         else if(dirs === "Boutiques"){
-          console.log(`[📂 ${dirs}] - ${f} Chargée avec succès`.bgGreen);
+          console.log(`[📂 ${dirs}] - ${f} Chargée avec succès`.green);
         } else if(dirs === "Commandes"){
-          console.log(`[📂 ${dirs}] - ${f} Chargée avec succès`.bgMagenta);
+          console.log(`[📂 ${dirs}] - ${f} Chargée avec succès`.magenta);
         } else if(dirs === "Outils"){
-          console.log(`[📂 ${dirs}] - ${f} Chargée avec succès`.bgBlue);
+          console.log(`[📂 ${dirs}] - ${f} Chargée avec succès`.blue);
         }
         else if(dirs === "Grades"){
-          console.log(`[📂 ${dirs}] - ${f} Chargée avec succès`.bgCyan);
+          console.log(`[📂 ${dirs}] - ${f} Chargée avec succès`.cyan);
         }
         else if(dirs === "Help"){
-          console.log(`[📂 ${dirs}] - ${f} Chargée avec succès`.bgYellow);
+          console.log(`[📂 ${dirs}] - ${f} Chargée avec succès`.yellow);
+        }
+        else if(dirs === "misc"){
+          console.log(color.x202.bold(`[📂 ${dirs}] - ${f} Chargée avec succès`));
         }
         this.commands.set(props.name, props);
       })
@@ -79,23 +82,11 @@ class Client extends Discord.Client {
            */
 
           const event = require(`../Events/${dirs}/${evt}`);
-          console.log(`[⌛ ${dirs}] - ${evt} Chargée avec succès`.bgYellow);
+          console.log(`[⌛ ${dirs}] - ${evt} Chargée avec succès`.yellow);
           this.on(event.event, event.run.bind(null, this));
         });
     });
-    fs.readdirSync("./Events").filter(dir => dir === "invite").forEach((dirs) => {
-      fs.readdirSync(`./Events/${dirs}/`)
-        .filter((file) => file.endsWith(".js"))
-        .forEach(async (evt) => {
-          /**
-           * @type {InviteEvent}
-           */
-
-          const event = require(`../Events/${dirs}/${evt}`);
-          console.log(`[⌛] - ${evt} Chargée avec succès`.bgYellow);
-          this.on(event.event, event.run.bind(null, this));
-        });
-    });
+    
 
     this.login(token);
   }
