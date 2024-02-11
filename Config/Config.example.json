@@ -1,0 +1,12 @@
+{
+  "token": "BOT TOKEN",
+  "prefix": "?",
+  "color": { "gamma": "#50C878", "alpha": "#6495ED", "base": "#FF7011" },
+  "images": {
+    "alpha": "https://cdn.discordapp.com/attachments/1202575394545471549/1205932148251566080/Alpha.png?ex=65da2ad5&is=65c7b5d5&hm=b1caf6c70383846b201fdd7abc0ccf4de697d22780e0ecbcfbac67a8c056487b&",
+    "gamma": "https://cdn.discordapp.com/attachments/1202575394545471549/1205932148520128652/gamma.png?ex=65da2ad5&is=65c7b5d5&hm=879bfae257f8d84c39fa4bec9a7f220af8301614f5726fe4d513f7e14728d0f4&",
+    "gammaBoutique" : "https://cdn.discordapp.com/attachments/1202575394545471549/1205936339745513482/boutique.png?ex=65da2ebc&is=65c7b9bc&hm=08e9416b54c005e309d09fae2119808bc9b772a336c716a65b0e520063882a7a&",
+    "alphaBoutique" : "https://cdn.discordapp.com/attachments/1202575394545471549/1205939992921378896/alphaboutique.png?ex=65da3223&is=65c7bd23&hm=6872df7a1b135817780eaaa313b8e7cdcb08dce29884aaeee176e002870ac041&"
+  }
+}
+
