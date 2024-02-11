@@ -165,7 +165,7 @@ sur [FirstSky](https://discord.gg/firstsky) !
              if (x.user.id === message.user.id) {
                   return true;
              } else {
-                  x.reply({ embeds: [{ title: "Erreur", description: `${x.user} vous ne pouvez pas utliser ces interactions. Vous n'êtes pas l'auteur du message !`, color: bot.color }], ephemeral: true })
+                  x.reply({ embeds: [{ title: "Erreur", description: `${x.user} vous ne pouvez pas utliser ces interactions. Vous n'êtes pas l'auteur du message !`, color: client.color }], ephemeral: true })
                   return false;
              }
         },
