@@ -39,4 +39,4 @@ Un grand merci à tous ceux qui contribuent au développement et à l'améliorat
 
 ---
 
-N'oublie pas de personnaliser les sections avec les informations spécifiques à ton bot et à ton projet. Ajoute également des captures d'écran, des détails sur les prérequis, et toute autre information pertinente. Bonne chance avec ton projet !
+
