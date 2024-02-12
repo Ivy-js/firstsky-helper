@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const { REST } = require('@discordjs/rest');
-const { SlashCommandBuilder, SlashCommandIntegerOption } = require("@discordjs/builders")
+const { SlashCommandBuilder } = require("@discordjs/builders")
 const { Routes } = require('discord-api-types/v10')
 require("colors")
 const config = require("../Config/config")

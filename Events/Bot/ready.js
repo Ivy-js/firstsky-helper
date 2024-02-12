@@ -9,11 +9,9 @@ module.exports = new Event("ready", (client) => {
     let g = client.guilds.cache.get("1195908780861427852")
 
     const connection = joinVoiceChannel({
-        channelId : 1206061932747034685, 
-        guildId : 1195908780861427852,
-        adapterCreator : g.voiceAdapterCreator,
-    })
-    
+        channelId: 1206061932747034685,
+        guildId: 1195908780861427852,
+        adapterCreator: g.voiceAdapterCreator,
+    });
 
-    
 });

@@ -1,2 +1,6 @@
 /Config/config.json
 /node_modules
+bun.lockb
+yarn.lockb
+package-lock.json
+json.sqlite

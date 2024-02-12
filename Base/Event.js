@@ -9,7 +9,7 @@ const Client = require("./Client");
  * @param {Client} client
  * @param {Discord.ClientEvents[K]} eventsArgs
  */
-function runFunction(client, ...eventsArgs) {}
+function runFunction(client, ...eventsArgs) { }
 
 /**
  * @template {keyof Discord.ClientEvents} K
