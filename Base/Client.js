@@ -4,11 +4,13 @@ const intents = new Discord.Intents(32767);
 const config = require("../Config/config.json");
 const Command = require("./Command");
 const Event = require("./Event");
-const { QuickDB } = require("quick.db")
-const db = new QuickDB()
-const GiveawayManager = require("discord-regiveaways"); 
+const { QuickDB } = require("quick.db");
+const { GiveawayManager } = require("discord-regiveaways");
+const db = new QuickDB();
+
 var color = require("colors-cli/safe")
-require("colors")
+require("colors");
+
 class Client extends Discord.Client {
   constructor(options) {
     super({ intents });
@@ -16,16 +18,16 @@ class Client extends Discord.Client {
     /**
      * @type {Discord.Collection<string, Command>}
      */
-    const manager = new GiveawayManager.GiveawayManager(this, {
-      storage : "./giveaways.json", 
-      config : {
-        botsCanWin : false, 
-        embedColor : "#AED581", 
-        embedColorEnd : this.color, 
-        reaction : "🎆", 
-        botName : `🎆 Giveaway`, 
-        forceUpdateEvery : 3600, 
-        endedGiveawaysLifetime : 1_600_000
+    const manager = new GiveawayManager(this, {
+      storage: "./giveaways.json",
+      config: {
+        botsCanWin: false,
+        embedColor: "#AED581",
+        embedColorEnd: this.color,
+        reaction: "🎆",
+        botName: `🎆 Giveaway`,
+        forceUpdateEvery: 3600,
+        endedGiveawaysLifetime: 1_600_000
       }
     })
     this.commands = new Discord.Collection();
@@ -33,12 +35,13 @@ class Client extends Discord.Client {
     this.prefix = config.prefix;
     this.config = config
     this.db = db,
-    this.GiveawayManager = manager; 
+      this.GiveawayManager = manager;
   }
 
   start(token) {
 
     fs.readdirSync("./Commands")
+<<<<<<< HEAD
     .forEach((dirs) =>{
       fs.readdirSync(`./Commands/${dirs}/`)
       .filter((file) => file.endsWith(".js"))
@@ -73,8 +76,47 @@ class Client extends Discord.Client {
           console.log(color.x167.bold(`[📂 ${dirs}] - ${f} Chargée avec succès`));
         }
         this.commands.set(props.name, props);
+=======
+      .forEach((dirs) => {
+        fs.readdirSync(`./Commands/${dirs}/`)
+          .filter((file) => file.endsWith(".js"))
+          .forEach(async (f) => {
+            /**
+             * @type {Command}
+             */
+
+            const props = require(`../Commands/${dirs}/${f}`);
+
+            switch (dirs) {
+              case 'Contact':
+                console.log(`[📂 ${dirs}] - ${f} Chargée avec succès`.blue);
+                break;
+              case 'Fermes':
+                console.log(`[📂 ${dirs}] - ${f} Chargée avec succès`.red);
+                break;
+              case 'Boutiques':
+                console.log(`[📂 ${dirs}] - ${f} Chargée avec succès`.green);
+                break;
+              case 'Commandes':
+                console.log(`[📂 ${dirs}] - ${f} Chargée avec succès`.magenta);
+                break;
+              case 'Outils':
+                console.log(`[📂 ${dirs}] - ${f} Chargée avec succès`.blue);
+                break;
+              case 'Grades':
+                console.log(`[📂 ${dirs}] - ${f} Chargée avec succès`.cyan);
+                break;
+              case 'Help':
+                console.log(`[📂 ${dirs}] - ${f} Chargée avec succès`.yellow);
+                break;
+              case 'misc':
+                console.log(color.x202.bold(`[📂 ${dirs}] - ${f} Chargée avec succès`));
+            };
+
+            this.commands.set(props.name, props);
+          })
+>>>>>>> 998496350f8af33b5d3d700b08da39d274a74616
       })
-    })
 
     fs.readdirSync("./Events").filter(dir => dir !== "invite").forEach((dirs) => {
       fs.readdirSync(`./Events/${dirs}/`)
@@ -89,7 +131,7 @@ class Client extends Discord.Client {
           this.on(event.event, event.run.bind(null, this));
         });
     });
-    
+
 
     this.login(token);
   }

@@ -9,7 +9,7 @@ const Discord = require("discord.js");
  * @param {string[]} args
  */
 
-function RunFunction(client, message, args) {}
+function RunFunction(client, message, args) { }
 
 class Command {
   /**

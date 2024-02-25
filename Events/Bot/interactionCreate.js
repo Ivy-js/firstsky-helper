@@ -1,24 +1,24 @@
 const Event = require("../../Base/Event")
 const Discord = require("discord.js")
+
 const allowedUserIDs = {
-    ivy: "1114616280138395738",
+  ivy: "1114616280138395738",
 };
+
 module.exports = new Event("interactionCreate", async (client, interaction) => {
 
-    if (interaction.isCommand()) {
-        const command = client.commands.get(interaction.commandName);
-        if (!interaction.member.permissions.has(new Discord.Permissions(command.permission)) && command.permission !== Discord.Permissions.FLAGS.VIEW_CHANNEL ) return interaction.reply("Vous n'avez pas la permission requise pour exécuter la commande.")
-        if (command.ownerOnly) {
-            const userIsAllowed = Object.values(allowedUserIDs).includes(interaction.user.id);
-            
-            if (!userIsAllowed) {
-              return interaction.reply({ content: "Vous devez être développeur.", ephemeral: true });
-            }
-          }
+  if (interaction.isCommand()) {
+    const command = client.commands.get(interaction.commandName);
+    if (!interaction.member.permissions.has(new Discord.Permissions(command.permission)) && command.permission !== Discord.Permissions.FLAGS.VIEW_CHANNEL) return interaction.reply("Vous n'avez pas la permission requise pour exécuter la commande.")
+    if (command.ownerOnly) {
+      const userIsAllowed = Object.values(allowedUserIDs).includes(interaction.user.id);
 
-        command.run(client, interaction, interaction.options, client.db)
+      if (!userIsAllowed) {
+        return interaction.reply({ content: "Vous devez être développeur.", ephemeral: true });
+      }
     }
 
+<<<<<<< HEAD
     if(interaction.isModalSubmit()){
       if(interaction.customId === "ChangeEvent"){               
         const EventName = interaction.fields.getTextInputValue("EventName")
@@ -38,4 +38,8 @@ module.exports = new Event("interactionCreate", async (client, interaction) => {
         client.db.set(`Event.color`, EventColor)
       }
     }
+=======
+    command.run(client, interaction, interaction.options, client.db)
+  }
+>>>>>>> 998496350f8af33b5d3d700b08da39d274a74616
 })
