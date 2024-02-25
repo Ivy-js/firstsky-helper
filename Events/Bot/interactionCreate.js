@@ -18,4 +18,24 @@ module.exports = new Event("interactionCreate", async (client, interaction) => {
 
         command.run(client, interaction, interaction.options, client.db)
     }
+
+    if(interaction.isModalSubmit()){
+      if(interaction.customId === "ChangeEvent"){               
+        const EventName = interaction.fields.getTextInputValue("EventName")
+        const EventDescription = interaction.fields.getTextInputValue("EventDescription")
+        const EventColor = interaction.fields.getTextInputValue("EventColor")
+
+        let Embed = new Discord.MessageEmbed()
+        .setTitle(`🎆 Nouvel événement`)
+        .setDescription(`Un nouvel événement a été créé par ${interaction.user.username}\n Voici les informations de l'événement : \n\n **Nom de l'événement** : ${EventName}\n **Description de l'événement** : ${EventDescription}`)
+        .setColor(EventColor)
+        .setFooter({text : `Événement créé par ${interaction.user.username}`, iconURL : client.user.avatarURL({dynamic: true})})
+
+        interaction.reply({embeds : [Embed]})
+
+        client.db.set(`Event.name`, EventName)
+        client.db.set(`Event.description`, EventDescription)
+        client.db.set(`Event.color`, EventColor)
+      }
+    }
 })

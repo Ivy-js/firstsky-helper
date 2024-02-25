@@ -15,6 +15,10 @@ module.exports = async bot => {
      new SlashCommandBuilder()
      .setName("admin")
      .setDescription("Permet d'avoir accès au menu d'administrateur du bot")
+     , 
+     new SlashCommandBuilder()
+        .setName("event")
+        .setDescription("Permet d'avoir l'événement en cours")
     ];
     commands.push.toString(commands)
     

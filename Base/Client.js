@@ -69,6 +69,9 @@ class Client extends Discord.Client {
         else if(dirs === "misc"){
           console.log(color.x202.bold(`[📂 ${dirs}] - ${f} Chargée avec succès`));
         }
+        else if(dirs === "Events"){
+          console.log(color.x167.bold(`[📂 ${dirs}] - ${f} Chargée avec succès`));
+        }
         this.commands.set(props.name, props);
       })
     })

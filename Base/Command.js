@@ -23,6 +23,7 @@ class Command {
     this.perm = options.perm;
     this.category = options.category;
     this.run = options.run;
+    this.ownerOnly = options.ownerOnly;
   }
 }
 

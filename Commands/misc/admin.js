@@ -1,4 +1,4 @@
-const { Permissions, MessageEmbed, MessageActionRow, MessageButton, MessageSelectMenu,  } = require("discord.js");
+const { Permissions, MessageEmbed, MessageActionRow, MessageButton, MessageSelectMenu, Modal, TextInputComponent  } = require("discord.js");
 const { joinVoiceChannel } = require("@discordjs/voice")
 const Command = require("../../Base/Command");
 
@@ -11,7 +11,6 @@ module.exports = new Command({
   ownerOnly : true, 
 
   async run(client, message, args) {
-    console.log("caca")
     let embed = new MessageEmbed()
     .setTitle(`💻 Menu Administrateur`)
     .setDescription(`
@@ -80,8 +79,58 @@ Utilise le menu ci-dessous pour naviguer dans le menu.
 
 
     if(interaction.isSelectMenu()){
-        
+        if(interaction.customId === "admin"){
+            if(interaction.values[0] === "event"){
+                const modal = new Modal()
+                .setCustomId("ChangeEvent")
+                .setTitle("Changer l'événement")
+
+                const EventName = new TextInputComponent()
+                .setCustomId("EventName")
+                .setLabel("Nom de l'événement")
+                .setPlaceholder("Nom de l'événement")
+                .setMinLength(1)
+                .setMaxLength(50)
+                .setRequired(true)
+                .setStyle("SHORT")
+
+
+                const EventDescription = new TextInputComponent()
+                .setCustomId("EventDescription")
+                .setLabel("Description de l'événement")
+                .setPlaceholder("Description de l'événement")
+                .setMinLength(1)
+                .setMaxLength(250)
+                .setRequired(true)
+                .setStyle("PARAGRAPH")
+
+                const EventColor = new TextInputComponent()
+                .setCustomId("EventColor")
+                .setLabel("Couleur de l'événement")
+                .setPlaceholder("Exemple : #FF0000")
+                .setMinLength(1)
+                .setMaxLength(8)
+                .setRequired(true)
+                .setStyle("SHORT")
+                
+                const firstRow = new MessageActionRow().addComponents(EventName)
+                const secondRow = new MessageActionRow().addComponents(EventDescription)
+                const trirdRow = new MessageActionRow().addComponents(EventColor)
+                modal.addComponents(firstRow, secondRow, trirdRow)
+
+                interaction.showModal(modal)
+                
+                
+            }
+        }
     }
+
+    if(interaction.isModalSubmit()){
+        if(interaction.customId === "ChangeEvent"){
+        
+        }
+    } 
+
    })
   },
 });
